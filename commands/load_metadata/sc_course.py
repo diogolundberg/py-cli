@@ -1,12 +1,10 @@
-import click
-import pandas
-import pickle
+import click, pandas, pickle, json
 
 from clients import s3, redis
 
 
 @click.command()
-def cli():
+def sc_course():
     csv = s3.get('redshift/attrs/attrs_sc_course.csv')
     df = pandas.read_csv(
         csv,

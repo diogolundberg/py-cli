@@ -11,7 +11,7 @@ client = boto3.client(
 def get(filename):
     obj = client.get_object(Bucket='dataviva-etl', Key=filename)
     
-    return obj['Body'].read()
+    return obj['Body']
 
 def put(filename, object):
     obj = client.put_object(

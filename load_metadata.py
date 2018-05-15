@@ -1,5 +1,5 @@
-from commands import cli
+from commands import load_metadata
 
 
 if __name__ == '__main__':
-    cli()
+    load_metadata()
