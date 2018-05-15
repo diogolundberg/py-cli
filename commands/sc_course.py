@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 import click
 import pandas
 import pickle
@@ -6,13 +5,8 @@ import pickle
 from clients import s3, redis
 
 
-@click.group()
-@click.option('--debug/--no-debug', default=False)
-def load(debug):
-    click.echo('Debug mode is %s' % ('on' if debug else 'off'))
-
-@load.command()
-def sc_course():
+@click.command()
+def cli():
     csv = s3.get('redshift/attrs/attrs_sc_course.csv')
     df = pandas.read_csv(
         csv,
