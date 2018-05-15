@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import boto3
+import boto3, io
 from os import getenv
 
 client = boto3.client(
@@ -11,7 +11,7 @@ client = boto3.client(
 def get(filename):
     obj = client.get_object(Bucket='dataviva-etl', Key=filename)
     
-    return obj['Body']
+    return io.BytesIO(obj['Body'].read())
 
 def put(filename, object):
     obj = client.put_object(
