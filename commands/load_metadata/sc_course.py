@@ -42,3 +42,4 @@ def sc_course():
     s3.put('attrs_sc_course_field.json', json.dumps(sc_courses_field, ensure_ascii=False))
 
     click.echo("SC Courses loaded.")
+    
