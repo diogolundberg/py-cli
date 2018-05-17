@@ -3,22 +3,20 @@ from importlib import import_module
 module = import_module('commands.load_metadata.sc_course')
 sc_course = module.sc_course
 
-module = import_module('commands.load_metadata.load_metadata')
-
-load_ports = module.load_ports
-load_countries = module.load_countries
-load_occupations = module.load_occupations
-load_products = module.load_products
-load_states = module.load_states
-load_regions = module.load_regions
-load_continents = module.load_continents
-load_territories = module.load_territories
-load_economic_blocks = module.load_economic_blocks
-load_municipalities = module.load_municipalities
-load_industries = module.load_industries
-load_hedu_course = module.load_hedu_course
-load_establishments = module.load_establishments
-load_inflections = module.load_inflections
-load_attrs = module.load_attrs
-load_metadata_command = module.load_metadata_command
-load_all = module.load_all
+from commands.load_metadata.all import ports
+from commands.load_metadata.all import countries
+from commands.load_metadata.all import occupations
+from commands.load_metadata.all import products
+from commands.load_metadata.all import states
+from commands.load_metadata.all import regions
+from commands.load_metadata.all import continents
+from commands.load_metadata.all import territories
+from commands.load_metadata.all import economic_blocks
+from commands.load_metadata.all import municipalities
+from commands.load_metadata.all import industries
+from commands.load_metadata.all import hedu_course
+from commands.load_metadata.all import establishments
+from commands.load_metadata.all import inflections
+from commands.load_metadata.all import attrs
+from commands.load_metadata.all import metadata_command
+from commands.load_metadata.all import all

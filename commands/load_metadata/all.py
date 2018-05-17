@@ -2,7 +2,7 @@ import click, pandas, pickle, json
 from clients import s3, redis
 
 @click.command()
-def load_ports():
+def ports():
 
 	csv = s3.get('redshift/attrs/attrs_porto.csv')
 	df = pandas.read_csv(
@@ -27,7 +27,7 @@ def load_ports():
 	click.echo("Ports loaded.")
 
 @click.command()
-def load_countries():
+def countries():
 	csv = s3.get('redshift/attrs/attrs_continente.csv')
 	df_continents = pandas.read_csv(
 		csv,
@@ -77,7 +77,7 @@ def load_countries():
 	click.echo("Countries loaded.")
 
 @click.command()
-def load_occupations():
+def occupations():
 
 	csv = s3.get('redshift/attrs/attrs_cbo.csv')
 	df = pandas.read_csv(
@@ -123,7 +123,7 @@ def load_occupations():
 	click.echo("Occupations loaded.")
 
 @click.command()
-def load_products():
+def products():
 	csv = s3.get('redshift/attrs/attrs_hs.csv')
 	df = pandas.read_csv(
 		csv,
@@ -133,7 +133,7 @@ def load_products():
 		converters={
 			"id": str
 		}
-	)  
+	)
 
 	products = {}
 	product_sections = {}
@@ -189,7 +189,7 @@ def load_products():
 	click.echo("Products loaded.")
 
 @click.command()
-def load_states():
+def states():
 	csv = s3.get('redshift/attrs/attrs_uf_ibge_mdic.csv')
 	df = pandas.read_csv(
 			csv,
@@ -199,11 +199,11 @@ def load_states():
 			converters={
 				"ibge_id": str
 			}
-		)  
+		)
 
 	states = {}
 
-	for _, row in df.iterrows():  
+	for _, row in df.iterrows():
 		if not row['ibge_id']:
 			continue
 
@@ -223,7 +223,7 @@ def load_states():
 	click.echo("States loaded.")
 
 @click.command()
-def load_regions():
+def regions():
 	csv = s3.get('redshift/attrs/attrs_regioes.csv')
 	df = pandas.read_csv(
 		csv,
@@ -251,7 +251,7 @@ def load_regions():
 	click.echo("Regions loaded.")
 
 @click.command()
-def load_continents():
+def continents():
 	csv = s3.get('redshift/attrs/attrs_continente.csv')
 	df = pandas.read_csv(
 		csv,
@@ -287,7 +287,7 @@ def load_continents():
 	click.echo("Continents loaded.")
 
 @click.command()
-def load_territories():
+def territories():
 	csv = s3.get('redshift/attrs/attrs_territorios_de_desenvolvimento.csv')
 	df = pandas.read_csv(
 		csv,
@@ -313,10 +313,10 @@ def load_territories():
 
 	s3.put('attrs_territory.json', json.dumps(territories, ensure_ascii=False))
 
-	click.echo("Territories loaded.")    
+	click.echo("Territories loaded.")
 
 @click.command()
-def load_economic_blocks():
+def economic_blocks():
 	csv = s3.get('redshift/attrs/attrs_bloco_economico.csv')
 	df = pandas.read_csv(
 		csv,
@@ -327,7 +327,7 @@ def load_economic_blocks():
 			"country_id": str
 		}
 	)
-        
+
 	economic_blocks = {}
 
 	for _, row in df.iterrows():
@@ -352,7 +352,7 @@ def load_economic_blocks():
 	click.echo("Economic Blocks loaded.")
 
 @click.command()
-def load_municipalities():
+def municipalities():
 	csv = s3.get('redshift/attrs/attrs_municipios.csv')
 	df = pandas.read_csv(
 		csv,
@@ -407,7 +407,7 @@ def load_municipalities():
 	click.echo("Municipalities, microregions and mesoregions loaded.")
 
 @click.command()
-def load_industries():
+def industries():
 	csv = s3.get('redshift/attrs/attrs_cnae.csv')
 	df = pandas.read_csv(
 		csv,
@@ -483,7 +483,7 @@ def load_industries():
 	click.echo("Industries loaded.")
 
 @click.command()
-def load_hedu_course():
+def hedu_course():
 	csv = s3.get('redshift/attrs/attrs_hedu_course.csv')
 	df = pandas.read_csv(
 		csv,
@@ -528,7 +528,7 @@ def load_hedu_course():
 	click.echo("HEDU Courses loaded.")
 
 @click.command()
-def load_establishments():
+def establishments():
 	csv = s3.get('attrs/cnes_final.csv')
 	df = pandas.read_csv(
 		csv,
@@ -553,7 +553,7 @@ def load_establishments():
 	click.echo("Establishment loaded.")
 
 @click.command()
-def load_inflections():
+def inflections():
 	csv = s3.get('redshift/attrs/attrs_infleccoes.csv')
 	df = pandas.read_csv(
 		csv,
@@ -579,7 +579,7 @@ def load_inflections():
 
 	click.echo("Inflections loaded.")
 
-def load_attrs(attrs):
+def attrs(attrs):
 	for attr in attrs:
 		click.echo('Loading %s ...' % attr['name'])
 		csv = s3.get('redshift/attrs/%s' % attr['csv_filename'])
@@ -616,7 +616,7 @@ def load_attrs(attrs):
 		click.echo(" loaded.")
 
 @click.command()
-def load_metadata_command():
+def metadata_command():
 	load_attrs([
 		#hedu
 		{'name': 'shift', 'csv_filename': 'attrs_shift.csv'},
@@ -680,7 +680,7 @@ def load_metadata_command():
 
 @click.command()
 @click.pass_context
-def load_all(ctx):
+def all(ctx):
 	ctx.invoke(load_ports)
 	ctx.invoke(load_countries)
 	ctx.invoke(load_occupations)
