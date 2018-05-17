@@ -1,23 +1,23 @@
 import click
 
-from commands.load_metadata.sc_course import sc_course
-from commands.load_metadata.all import ports
-from commands.load_metadata.all import countries
-from commands.load_metadata.all import occupations
-from commands.load_metadata.all import products
-from commands.load_metadata.all import states
-from commands.load_metadata.all import regions
-from commands.load_metadata.all import continents
-from commands.load_metadata.all import territories
-from commands.load_metadata.all import economic_blocks
-from commands.load_metadata.all import municipalities
-from commands.load_metadata.all import industries
-from commands.load_metadata.all import hedu_course
-from commands.load_metadata.all import establishments
-from commands.load_metadata.all import inflections
-from commands.load_metadata.all import attrs
-from commands.load_metadata.all import metadata_command
-from commands.load_metadata.all import all
+from commands.load_metadata import sc_course
+from commands.load_metadata import ports
+from commands.load_metadata import countries
+from commands.load_metadata import occupations
+from commands.load_metadata import products
+from commands.load_metadata import states
+from commands.load_metadata import regions
+from commands.load_metadata import continents
+from commands.load_metadata import territories
+from commands.load_metadata import economic_blocks
+from commands.load_metadata import municipalities
+from commands.load_metadata import industries
+from commands.load_metadata import hedu_course
+from commands.load_metadata import establishments
+from commands.load_metadata import inflections
+from commands.load_metadata import attrs
+from commands.load_metadata import metadata_command
+from commands.load_metadata import all
 
 
 @click.group()
